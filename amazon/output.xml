@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.12.3 on win32)" generated="2025-02-15T16:11:19.360985" rpa="false" schemaversion="5">
+<suite id="s1" name="Amazon Search Found" source="D:\workshop\amazon\amazon_search_found.robot">
+<test id="s1-t1" name="ทดสอบด้วยคำค้น agile testing ต้องเจอ Lisa Crispin and Janet Gregory" line="12">
+<kw name="ค้นหาด้วยคำค้น" owner="keywords.resource">
+<kw name="เปิด Browser เข้าเว็ป amazon" owner="keywords.resource">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-02-15T16:11:19.490731" level="INFO">Opening browser 'headlesschrome' to base url 'https://www.amazon.com/'.</msg>
+<arg>browser=${BROWSER}</arg>
+<arg>url=${URL}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-02-15T16:11:19.490731" elapsed="3.133548"/>
+</kw>
+<status status="PASS" start="2025-02-15T16:11:19.490731" elapsed="3.133548"/>
+</kw>
+<kw name="ใส่คำค้น" owner="keywords.resource">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-02-15T16:11:22.625279" level="INFO">Typing text 'agile testing' into text field 'id=twotabsearchtextbox'.</msg>
+<arg>id=twotabsearchtextbox</arg>
+<arg>text=${keywords}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-15T16:11:22.624279" elapsed="0.125446"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-02-15T16:11:22.750725" level="INFO">Sending key(s) ('RETURN',) to page.</msg>
+<msg time="2025-02-15T16:11:22.750725" level="INFO">Pressing special key RETURN to browser.</msg>
+<msg time="2025-02-15T16:11:22.750725" level="INFO">Releasing special key RETURN.</msg>
+<arg>None</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-02-15T16:11:22.749725" elapsed="1.949128"/>
+</kw>
+<arg>${keywords}</arg>
+<status status="PASS" start="2025-02-15T16:11:22.624279" elapsed="2.074574"/>
+</kw>
+<kw name="ตรวจผลลัพธ์แล้วต้องเจอ" owner="keywords.resource">
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>${expected_result}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-02-15T16:11:24.699853" elapsed="0.017375"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>${expected_result1}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-02-15T16:11:24.717228" elapsed="0.010027"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>${book_name}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-02-15T16:11:24.727255" elapsed="0.009019"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>${paperback}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-02-15T16:11:24.736274" elapsed="0.013434"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>${kindle}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-02-15T16:11:24.749708" elapsed="0.010022"/>
+</kw>
+<arg>${expected_result}</arg>
+<arg>${expected_result1}</arg>
+<arg>${book_name}</arg>
+<arg>${paperback}</arg>
+<arg>${kindle}</arg>
+<status status="PASS" start="2025-02-15T16:11:24.698853" elapsed="0.060877"/>
+</kw>
+<arg>agile testing</arg>
+<arg>Lisa Crispin</arg>
+<arg>Janet Gregory</arg>
+<arg>Agile Testing: A Practical Guide for Testers and Agile Teams</arg>
+<arg>35</arg>
+<arg>33</arg>
+<status status="PASS" start="2025-02-15T16:11:19.490731" elapsed="5.268999"/>
+</kw>
+<status status="PASS" start="2025-02-15T16:11:19.489732" elapsed="5.270229"/>
+</test>
+<status status="PASS" start="2025-02-15T16:11:19.361985" elapsed="5.397976"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Amazon Search Found">Amazon Search Found</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

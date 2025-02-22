@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.12.3 on win32)" generated="2025-02-22T14:44:50.407834" rpa="false" schemaversion="5">
+<suite id="s1" name="Workshop" source="D:\workshop">
+<suite id="s1-s1" name="Sck Shopping" source="D:\workshop\sck_shopping">
+<suite id="s1-s1-s1" name="Checkout Visa Success" source="D:\workshop\sck_shopping\checkout_visa_success.robot">
+<test id="s1-s1-s1-t1" name="ชำระเงินด้วย VISA CARD สำเร็จ" line="8">
+<kw name="เข้าหน้า HOME ของ SCK Shopping Mall">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-02-22T14:44:50.585940" level="INFO">Opening browser 'Edge' to base url 'None'.</msg>
+<arg>browser=${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-02-22T14:44:50.585940" elapsed="1.437282"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-02-22T14:44:52.024222" level="INFO">Opening url 'http://139.59.248.187/product/list'</msg>
+<arg>url=${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-02-22T14:44:52.023222" elapsed="2.592470"/>
+</kw>
+<status status="PASS" start="2025-02-22T14:44:50.584941" elapsed="4.030751"/>
+</kw>
+<kw name="ค้นหาสินค้าด้วยคำค้น BiCyCle">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-02-22T14:44:54.616693" level="INFO">Typing text 'BiCyCle' into text field 'id=search-product-input'.</msg>
+<arg>id=search-product-input</arg>
+<arg>text=BiCyCle</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-22T14:44:54.616693" elapsed="0.145218"/>
+</kw>
+<status status="PASS" start="2025-02-22T14:44:54.615692" elapsed="0.146219"/>
+</kw>
+<kw name="ตรวจสอบผลการค้นหา ต้องพบ Balance Training Bicycle และราคาต่อชิ้น 4,314.60 บาท">
+<msg time="2025-02-22T14:44:54.764929" level="FAIL">No keyword with name 'ตรวจสอบผลการค้นหา ต้องพบ Balance Training Bicycle และราคาต่อชิ้น 4,314.60 บาท' found.</msg>
+<status status="FAIL" start="2025-02-22T14:44:54.763913" elapsed="0.001016">No keyword with name 'ตรวจสอบผลการค้นหา ต้องพบ Balance Training Bicycle และราคาต่อชิ้น 4,314.60 บาท' found.</status>
+</kw>
+<kw name="ตรวจสอบผลการค้นหา ต้องพบ Princess Training Bicycle และราคาต่อชิ้น 4,314.60 บาท">
+<status status="NOT RUN" start="2025-02-22T14:44:54.766911" elapsed="0.001001"/>
+</kw>
+<kw name="ตรวจสอบผลการค้นหา ต้องพบ BICYCLE Playing Dices และราคาต่อชิ้น 137.05 บาท">
+<status status="NOT RUN" start="2025-02-22T14:44:54.769912" elapsed="0.000999"/>
+</kw>
+<kw name="เลือกดูรายละเอียดสินค้า Balance Training Bicycle">
+<status status="NOT RUN" start="2025-02-22T14:44:54.771911" elapsed="0.001001"/>
+</kw>
+<kw name="ตรวจสอบข้อมูลสินค้า ชื่อสินค้าเท่ากันกับ Balance Training Bicycle">
+<status status="NOT RUN" start="2025-02-22T14:44:54.773914" elapsed="0.000999"/>
+</kw>
+<kw name="ตรวจสอบข้อมูลสินค้า ราคาสินค้าเท่ากันกับ 4,314.60 บาท">
+<status status="NOT RUN" start="2025-02-22T14:44:54.776921" elapsed="0.001994"/>
+</kw>
+<kw name="ตรวจสอบข้อมูลสินค้า จำนวนแต้มที่จะได้เท่ากันกับ 43 แต้ม">
+<status status="NOT RUN" start="2025-02-22T14:44:54.779912" elapsed="0.001000"/>
+</kw>
+<kw name="ตรวจสอบข้อมูลสินค้า จำนวนสินค้าเท่ากันกับ 100 ชิ้น">
+<status status="NOT RUN" start="2025-02-22T14:44:54.782923" elapsed="0.001002"/>
+</kw>
+<kw name="กดเลือกซื้อ Balance Training Bicycle จำนวน 3 คัน">
+<status status="NOT RUN" start="2025-02-22T14:44:54.784925" elapsed="0.000999"/>
+</kw>
+<kw name="กด Add to cart">
+<status status="NOT RUN" start="2025-02-22T14:44:54.786925" elapsed="0.001998"/>
+</kw>
+<kw name="ตรวจสอบจำนวนสินค้าในตะกร้าต้องเท่ากันกับ 1">
+<status status="NOT RUN" start="2025-02-22T14:44:54.790923" elapsed="0.001001"/>
+</kw>
+<kw name="เข้าดูรายการสินค้าที่เลือกซื้อ">
+<status status="NOT RUN" start="2025-02-22T14:44:54.792925" elapsed="0.001998"/>
+</kw>
+<kw name="ตรวจสอบตระกร้า ชื่อสินค้าเท่ากันกับ Balance Training Bicycle">
+<status status="NOT RUN" start="2025-02-22T14:44:54.796924" elapsed="0.002065"/>
+</kw>
+<kw name="ตรวจสอบตระกร้า ราคาสินค้าเท่ากันกับ 12,943.80 บาท">
+<status status="NOT RUN" start="2025-02-22T14:44:54.799989" elapsed="0.001995"/>
+</kw>
+<kw name="ตรวจสอบตระกร้า จำนวนแต้มที่จะได้เท่ากันกับ 129 แต้ม">
+<status status="NOT RUN" start="2025-02-22T14:44:54.802985" elapsed="0.002001"/>
+</kw>
+<kw name="ตรวจสอบตระกร้า จำนวนสินค้าเท่ากันกับ 100 ชิ้น">
+<status status="NOT RUN" start="2025-02-22T14:44:54.805985" elapsed="0.001004"/>
+</kw>
+<kw name="ตรวจสอบตระกร้า จำนวนสินค้า เท่ากับ 3 คัน">
+<status status="NOT RUN" start="2025-02-22T14:44:54.808985" elapsed="0.001015"/>
+</kw>
+<kw name="ตรวจสอบตระกร้า ยอดรวม">
+<status status="NOT RUN" start="2025-02-22T14:44:54.811000" elapsed="0.001986"/>
+</kw>
+<kw name="กด Chack out">
+<status status="NOT RUN" start="2025-02-22T14:44:54.814988" elapsed="0.000998"/>
+</kw>
+<kw name="ตรวจสอบCheckout ชื่อสินค้าเท่ากันกับ Balance Training Bicycle">
+<status status="NOT RUN" start="2025-02-22T14:44:54.817985" elapsed="0.001000"/>
+</kw>
+<kw name="ตรวจสอบCheckout ราคาสินค้าเท่ากันกับ 12,943.80 บาท">
+<status status="NOT RUN" start="2025-02-22T14:44:54.819985" elapsed="0.001021"/>
+</kw>
+<kw name="ตรวจสอบCheckout จำนวนแต้มที่จะได้เท่ากันกับ 129 แต้ม">
+<status status="NOT RUN" start="2025-02-22T14:44:54.823009" elapsed="0.000976"/>
+</kw>
+<kw name="ตรวจสอบCheckout จำนวนสินค้าเท่ากันกับ 100 ชิ้น">
+<status status="NOT RUN" start="2025-02-22T14:44:54.824984" elapsed="0.001018"/>
+</kw>
+<kw name="ตรวจสอบCheckout จำนวนสินค้า เท่ากับ 3 คัน">
+<status status="NOT RUN" start="2025-02-22T14:44:54.827001" elapsed="0.000984"/>
+</kw>
+<kw name="กรอกที่อยู่จัดส่ง">
+<status status="NOT RUN" start="2025-02-22T14:44:54.829985" elapsed="0.002001"/>
+</kw>
+<kw name="เลือกขนส่ง Kerry">
+<status status="NOT RUN" start="2025-02-22T14:44:54.833985" elapsed="0.001000"/>
+</kw>
+<kw name="เลือกชำระเงินด้วย Credit Card และกรอกข้อมูลบัตร">
+<status status="NOT RUN" start="2025-02-22T14:44:54.836985" elapsed="0.001000"/>
+</kw>
+<kw name="ยืนยันการชำระเงิน">
+<status status="NOT RUN" start="2025-02-22T14:44:54.838986" elapsed="0.001001"/>
+</kw>
+<kw name="กรอก OTP และยืนยันการชำระเงิน">
+<status status="NOT RUN" start="2025-02-22T14:44:54.841984" elapsed="0.001008"/>
+</kw>
+<kw name="ตรวจสอบผลการชำระเงิน">
+<status status="NOT RUN" start="2025-02-22T14:44:54.844984" elapsed="0.001001"/>
+</kw>
+<status status="FAIL" start="2025-02-22T14:44:50.583939" elapsed="4.264047">No keyword with name 'ตรวจสอบผลการค้นหา ต้องพบ Balance Training Bicycle และราคาต่อชิ้น 4,314.60 บาท' found.</status>
+</test>
+<status status="FAIL" start="2025-02-22T14:44:50.441823" elapsed="4.408164"/>
+</suite>
+<status status="FAIL" start="2025-02-22T14:44:50.439820" elapsed="4.412166"/>
+</suite>
+<status status="FAIL" start="2025-02-22T14:44:50.422822" elapsed="4.430164"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Workshop">Workshop</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1" name="Sck Shopping">Workshop.Sck Shopping</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1-s1" name="Checkout Visa Success">Workshop.Sck Shopping.Checkout Visa Success</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
