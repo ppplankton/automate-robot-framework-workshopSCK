@@ -13,12 +13,8 @@ ${BROWSER}    Edge
     ตรวจสอบผลการค้นหาที่ตำแหน่ง product-card-name-10 ต้องพบ Princess Training Bicycle และที่ตำแหน่ง product-card-price-10 ต้องพบราคาต่อชิ้น ฿4,314.60 บาท
     ตรวจสอบผลการค้นหาที่ตำแหน่ง product-card-name-458 ต้องพบ BICYCLE Playing Dices และที่ตำแหน่ง product-card-price-458 ต้องพบราคาต่อชิ้น ฿137.05 บาท
     
+    เลือกดูรายละเอียดสินค้าที่ตำแหน่ง product-card-1 และที่ตำแหน่ง product-card-name-1 ชื่อสินค้าต้องพบ Balance Training Bicycle
 
-
-
-    
-    # ตรวจสอบผลการค้นหา ต้องพบ BICYCLE Playing Dices และราคาต่อชิ้น 137.05 บาท
-    # เลือกดูรายละเอียดสินค้า Balance Training Bicycle
 
     # ตรวจสอบข้อมูลสินค้า ชื่อสินค้าเท่ากันกับ Balance Training Bicycle
     # ตรวจสอบข้อมูลสินค้า ราคาสินค้าเท่ากันกับ 4,314.60 บาท
@@ -66,6 +62,12 @@ ${BROWSER}    Edge
     Wait Until Element Is Visible    ${expected_card_id}
     Element Text Should Be    id=${expected_card_id}    expected=${expected_product_name}
     Element Text Should Be    id=${expected_product_price_id}    expected=${expected_product_price}
+
+เลือกดูรายละเอียดสินค้าที่ตำแหน่ง ${expected_card_id}และที่ตำแหน่ง ${expected_product_id} ชื่อสินค้าต้องพบ ${expected_product_name}
+    Click Element    ${expected_card_id}
+    Element Text Should Be    id=${expected_product_id}    expected=${expected_product_name}
+    
+
 
 # ตรวจสอบผลการค้นหา ต้องพบ Princess Training Bicycle และราคาต่อชิ้น 4,314.60 บาท
 #     Wait Until Element Is Visible    id=product-card-name-10
