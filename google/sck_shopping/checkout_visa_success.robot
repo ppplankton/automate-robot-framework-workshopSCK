@@ -64,9 +64,9 @@ ${BROWSER}    Edge
     Element Text Should Be    id=${expected_product_price_id}    expected=${expected_product_price}
 
 เลือกดูรายละเอียดสินค้าที่ตำแหน่ง ${expected_card_id} และที่ตำแหน่ง ${expected_product_id} ชื่อสินค้าต้องพบ ${expected_product_name}
-    Element Should Be Visible    id=product-card-1
+    Wait Until Element Is Visible    id=product-card-1
     Element Text Should Be    id=${expected_product_id}    expected=${expected_product_name}
-    Click Element    ${expected_card_id}
+    Click Element    id=product-card-1
     
 ตรวจสอบข้อมูลสินค้าตรวจสอบข้อมูลสินค้าที่ตำแหน่ง ${product-detail-product-name} ชื่อสินค้าเท่ากันกับ ${expected_product_name}
     Wait Until Element Is Visible    id=${product-detail-product-name}
