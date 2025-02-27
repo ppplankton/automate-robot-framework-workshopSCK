@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.2 on win32)" generated="2025-02-27T21:45:13.952115" rpa="false" schemaversion="5">
+<suite id="s1" name="Checkout Visa Success" source="D:\WorkAholic\automate-robot-framework-workshopSCK\sck_shopping\checkout_visa_success.robot">
+<test id="s1-t1" name="ชำระเงินด้วย VISA CARD สำเร็จ" line="8">
+<kw name="เข้าหน้า HOME ของ SCK Shopping Mall">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-02-27T21:45:14.245094" level="INFO">Opening browser 'Edge' to base url 'None'.</msg>
+<arg>browser=${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-02-27T21:45:14.244856" elapsed="1.480141"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-02-27T21:45:15.725546" level="INFO">Opening url 'http://139.59.248.187/product/list'</msg>
+<arg>url=${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-02-27T21:45:15.725281" elapsed="2.622711"/>
+</kw>
+<status status="PASS" start="2025-02-27T21:45:14.244150" elapsed="4.103988"/>
+</kw>
+<kw name="ค้นหาสินค้าด้วยคำค้น BiCyCle">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-02-27T21:45:18.349242" level="INFO">Typing text 'BiCyCle' into text field 'id=search-product-input'.</msg>
+<arg>id=search-product-input</arg>
+<arg>text=BiCyCle</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T21:45:18.348763" elapsed="0.199313"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-02-27T21:45:18.548559" level="INFO">Clicking button 'id=search-product-btn'.</msg>
+<arg>id=search-product-btn</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-27T21:45:18.548341" elapsed="0.208759"/>
+</kw>
+<status status="PASS" start="2025-02-27T21:45:18.348465" elapsed="0.408867"/>
+</kw>
+<kw name="ตรวจสอบผลการค้นหาที่ตำแหน่ง product-card-name-1 ต้องพบ Balance Training Bicycle และที่ตำแหน่ง product-card-price-1 ต้องพบราคาต่อชิ้น ฿4,314.60 บาท" source_name="ตรวจสอบผลการค้นหาที่ตำแหน่ง ${expected_card_id} ต้องพบ ${expected_product_name} และที่ตำแหน่ง ${expected_product_price_id} ต้องพบราคาต่อชิ้น ${expected_product_price} บาท">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${expected_card_id}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-27T21:45:18.758190" elapsed="0.228466"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-27T21:45:18.987122" level="INFO">Verifying element 'id=product-card-name-1' contains exact text 'Balance Training Bicycle'.</msg>
+<arg>id=${expected_card_id}</arg>
+<arg>expected=${expected_product_name}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2025-02-27T21:45:18.986830" elapsed="0.022734"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-27T21:45:19.010046" level="INFO">Verifying element 'id=product-card-price-1' contains exact text '฿4,314.60'.</msg>
+<arg>id=${expected_product_price_id}</arg>
+<arg>expected=${expected_product_price}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2025-02-27T21:45:19.009747" elapsed="0.017701"/>
+</kw>
+<status status="PASS" start="2025-02-27T21:45:18.757704" elapsed="0.269868"/>
+</kw>
+<kw name="ตรวจสอบผลการค้นหาที่ตำแหน่ง product-card-name-10 ต้องพบ Princess Training Bicycle และที่ตำแหน่ง product-card-price-10 ต้องพบราคาต่อชิ้น ฿4,314.60 บาท" source_name="ตรวจสอบผลการค้นหาที่ตำแหน่ง ${expected_card_id} ต้องพบ ${expected_product_name} และที่ตำแหน่ง ${expected_product_price_id} ต้องพบราคาต่อชิ้น ${expected_product_price} บาท">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${expected_card_id}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-27T21:45:19.028306" elapsed="0.018774"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-27T21:45:19.047552" level="INFO">Verifying element 'id=product-card-name-10' contains exact text 'Princess Training Bicycle'.</msg>
+<arg>id=${expected_card_id}</arg>
+<arg>expected=${expected_product_name}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2025-02-27T21:45:19.047264" elapsed="0.017172"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-27T21:45:19.064905" level="INFO">Verifying element 'id=product-card-price-10' contains exact text '฿4,314.60'.</msg>
+<arg>id=${expected_product_price_id}</arg>
+<arg>expected=${expected_product_price}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2025-02-27T21:45:19.064614" elapsed="0.016682"/>
+</kw>
+<status status="PASS" start="2025-02-27T21:45:19.027940" elapsed="0.053475"/>
+</kw>
+<kw name="ตรวจสอบผลการค้นหาที่ตำแหน่ง product-card-name-458 ต้องพบ BICYCLE Playing Dices และที่ตำแหน่ง product-card-price-458 ต้องพบราคาต่อชิ้น ฿137.05 บาท" source_name="ตรวจสอบผลการค้นหาที่ตำแหน่ง ${expected_card_id} ต้องพบ ${expected_product_name} และที่ตำแหน่ง ${expected_product_price_id} ต้องพบราคาต่อชิ้น ${expected_product_price} บาท">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${expected_card_id}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-27T21:45:19.082124" elapsed="0.016537"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-27T21:45:19.099130" level="INFO">Verifying element 'id=product-card-name-458' contains exact text 'BICYCLE Playing Dices'.</msg>
+<arg>id=${expected_card_id}</arg>
+<arg>expected=${expected_product_name}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2025-02-27T21:45:19.098841" elapsed="0.018369"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2025-02-27T21:45:19.117687" level="INFO">Verifying element 'id=product-card-price-458' contains exact text '฿137.05'.</msg>
+<arg>id=${expected_product_price_id}</arg>
+<arg>expected=${expected_product_price}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2025-02-27T21:45:19.117389" elapsed="0.016355"/>
+</kw>
+<status status="PASS" start="2025-02-27T21:45:19.081772" elapsed="0.052088"/>
+</kw>
+<kw name="เลือกดูรายละเอียดสินค้าที่ตำแหน่ง product-card-1 และที่ตำแหน่ง product-card-name-1 ชื่อสินค้าต้องพบ Balance Training Bicycle" source_name="เลือกดูรายละเอียดสินค้าที่ตำแหน่ง ${expected_card_id}และที่ตำแหน่ง ${expected_product_id} ชื่อสินค้าต้องพบ ${expected_product_name}">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-02-27T21:45:19.134775" level="INFO">Clicking element 'product-card-1 '.</msg>
+<msg time="2025-02-27T21:45:19.244090" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-6.png"&gt;&lt;img src="selenium-screenshot-6.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-02-27T21:45:19.244261" level="FAIL">Element with locator 'product-card-1 ' not found.</msg>
+<arg>${expected_card_id}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="FAIL" start="2025-02-27T21:45:19.134588" elapsed="0.112309">Element with locator 'product-card-1 ' not found.</status>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<arg>id=${expected_product_id}</arg>
+<arg>expected=${expected_product_name}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="NOT RUN" start="2025-02-27T21:45:19.247070" elapsed="0.000036"/>
+</kw>
+<status status="FAIL" start="2025-02-27T21:45:19.134152" elapsed="0.113072">Element with locator 'product-card-1 ' not found.</status>
+</kw>
+<status status="FAIL" start="2025-02-27T21:45:14.242983" elapsed="5.004554">Element with locator 'product-card-1 ' not found.</status>
+</test>
+<status status="FAIL" start="2025-02-27T21:45:13.953658" elapsed="5.294950"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Checkout Visa Success" id="s1" pass="0" fail="1" skip="0">Checkout Visa Success</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
