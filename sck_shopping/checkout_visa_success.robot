@@ -21,6 +21,7 @@ ${BROWSER}    Edge
     ตรวจสอบแต้มของสินค้าที่ตำแหน่ง product-detail-point จำนวนแต้มที่แสดงต้องเท่ากับ 43 Points
     ตรวจสอบจำนวนสินค้าที่ตำแหน่ง product-detail-quantity-input ต้องมีจำนวนเท่ากับ value 1
 
+
     # กดเพิ่มจำนวนสินค้าที่ตำแหน่ง product-detail-quantity-increment-btn จำนวน 3 ครั้ง ต้องมีจำนวนเท่ากับ 4
     
     # ตรวจสอบจำนวนคงเหลือของสินค้าที่ตำแหน่ง product-detail-stock จำนวนของสินค้าที่แสดงต้องแสดงจำนวน Stock 100 items
