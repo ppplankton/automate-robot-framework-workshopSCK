@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.12.3 on win32)" generated="2025-03-03T10:03:47.348027" rpa="false" schemaversion="5">
+<suite id="s1" name="Google K1" source="D:\automate-robot-framework-workshopSCK\google\google_k1.robot">
+<test id="s1-t1" name="ทดสอบ การค้นหาด้วยคำค้น &quot;Keychron&quot; บนเว็ปไซต์ Google ต้องเจอ Keychron Thailand" line="8">
+<kw name="เปิด Browser เข้าสู่เว็ปไซต์ https://www.google.com/">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-03-03T10:03:47.846085" level="INFO">Opening browser 'Edge' to base url 'https://www.google.com/'.</msg>
+<arg>browser=Edge</arg>
+<arg>url=https://www.google.com/</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-03-03T10:03:47.845077" elapsed="4.043829"/>
+</kw>
+<status status="PASS" start="2025-03-03T10:03:47.845077" elapsed="4.043829"/>
+</kw>
+<kw name="กรอกข้อความ &quot;Keychron&quot; และค้นหา">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-03-03T10:03:51.890915" level="INFO">Typing text 'Keychron' into text field 'name=q'.</msg>
+<arg>name=q</arg>
+<arg>text=Keychron</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-03T10:03:51.890915" elapsed="0.136986"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2025-03-03T10:03:52.028901" level="INFO">Sending key(s) ('RETURN',) to page.</msg>
+<msg time="2025-03-03T10:03:52.028901" level="INFO">Pressing special key RETURN to browser.</msg>
+<msg time="2025-03-03T10:03:52.028901" level="INFO">Releasing special key RETURN.</msg>
+<arg>None</arg>
+<arg>RETURN</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2025-03-03T10:03:52.028901" elapsed="1.855312"/>
+</kw>
+<status status="PASS" start="2025-03-03T10:03:51.889915" elapsed="1.994298"/>
+</kw>
+<kw name="ตรวจผลลัพธ์แล้วต้องเจอ Keychron Thailand">
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<msg time="2025-03-03T10:04:04.566347" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001BCA2D57AA0&gt;: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/2a4dcabca3f3837fac61ef5cb64983d1/screenshot</msg>
+<msg time="2025-03-03T10:04:08.656083" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001BCA2D57C50&gt;: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/2a4dcabca3f3837fac61ef5cb64983d1/screenshot</msg>
+<msg time="2025-03-03T10:04:12.726856" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001BCA2D57EC0&gt;: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/2a4dcabca3f3837fac61ef5cb64983d1/screenshot</msg>
+<msg time="2025-03-03T10:04:16.794531" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: HTTPConnectionPool(host='localhost', port=60811): Max retries exceeded with url: /session/2a4dcabca3f3837fac61ef5cb64983d1/screenshot (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001BCA2D84170&gt;: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))</msg>
+<msg time="2025-03-03T10:04:16.797550" level="FAIL">ProtocolError: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))</msg>
+<arg>Keychron Thailand</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="FAIL" start="2025-03-03T10:03:53.887232" elapsed="23.217298">ProtocolError: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))</status>
+</kw>
+<status status="FAIL" start="2025-03-03T10:03:53.887232" elapsed="23.218323">ProtocolError: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))</status>
+</kw>
+<status status="FAIL" start="2025-03-03T10:03:47.841066" elapsed="29.265481">ProtocolError: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))</status>
+</test>
+<status status="FAIL" start="2025-03-03T10:03:47.351025" elapsed="29.758524"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Google K1">Google K1</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-03-03T10:04:04.566347" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001BCA2D57AA0&gt;: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/2a4dcabca3f3837fac61ef5cb64983d1/screenshot</msg>
+<msg time="2025-03-03T10:04:08.656083" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001BCA2D57C50&gt;: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/2a4dcabca3f3837fac61ef5cb64983d1/screenshot</msg>
+<msg time="2025-03-03T10:04:12.726856" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001BCA2D57EC0&gt;: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/2a4dcabca3f3837fac61ef5cb64983d1/screenshot</msg>
+<msg time="2025-03-03T10:04:16.794531" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: HTTPConnectionPool(host='localhost', port=60811): Max retries exceeded with url: /session/2a4dcabca3f3837fac61ef5cb64983d1/screenshot (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001BCA2D84170&gt;: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))</msg>
+</errors>
+</robot>

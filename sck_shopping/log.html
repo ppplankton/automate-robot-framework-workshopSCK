@@ -5,7 +5,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="Robot Framework 7.2.2 (Python 3.13.2 on win32)" name="Generator">
+<meta content="Robot Framework 7.0.1 (Python 3.12.3 on win32)" name="Generator">
 <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKcAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAqAAAAAAAAAAAAAAAAAAAALIAAAD/AAAA4AAAANwAAADcAAAA3AAAANwAAADcAAAA3AAAANwAAADcAAAA4AAAAP8AAACxAAAAAAAAAKYAAAD/AAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/AAAA/wAAAKkAAAD6AAAAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN8AAAD/AAAA+gAAAMMAAAAAAAAAAgAAAGsAAABrAAAAawAAAGsAAABrAAAAawAAAGsAAABrAAAADAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAIsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAANEAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAAAAAAAAMgAAADIAAAAyAAAAMgAAADIAAAAyAAAAMgAAADIAAAAFAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAADwAAAB8AAAAAAAAAGAAAABcAAAAAAAAAH8AAABKAAAAAAAAAAAAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAADCAAAA/wAAACkAAADqAAAA4QAAAAAAAAD7AAAA/wAAALAAAAAGAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAIwAAAP4AAAD/AAAA/wAAAGAAAAAAAAAAAAAAAMkAAAD/AAAAigAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAAAAAAAIAAAAcAAAABkAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAA2gAAAP8AAAD7AAAAywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN4AAAD/AAAAqwAAAP8AAACvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALIAAAD/AAAAsgAAAAAAAAC5AAAA/wAAAMoAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMkAAAD/AAAAvAAAAAAAAAAAAAAAAAAAAKwAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAArQAAAAAAAAAAwAMAAIABAAAf+AAAP/wAAD/8AAAgBAAAP/wAAD/8AAA//AAAJIwAADHEAAA//AAAP/wAAB/4AACAAQAAwAMAAA==">
 <style media="all">
 :root {
@@ -1252,48 +1252,58 @@ window.stats = (function () {
             });
     }
     function calculatePercents(total, passed, failed, skipped) {
-        if (total == 0)
+        if (total == 0) {
             return [0.0, 0.0, 0.0];
+        }
         var pass = 100.0 * passed / total;
         var skip = 100.0 * skipped / total;
         var fail = 100.0 * failed / total;
         if (pass > 0 && pass < 0.1)
-            pass = 0.1;
+            pass = 0.1
         if (fail > 0 && fail < 0.1)
-            fail = 0.1;
+            fail = 0.1
         if (skip > 0 && skip < 0.1)
-            skip = 0.1;
+            skip = 0.1
         if (pass > 99.95 && pass < 100)
-            pass = 99.9;
+            pass = 99.9
         if (fail > 99.95 && fail < 100)
-            fail = 99.9;
+            fail = 99.9
         if (skip > 99.95 && skip < 100)
-            skip = 99.9;
-        return [round1(pass), round1(skip), round1(fail)];
+            skip = 99.9
+        return [Math.round(pass*10)/10, Math.round(skip*10)/10, Math.round(fail*10)/10];
     }
     function calculateWidths(num1, num2, num3) {
         if (num1 + num2 + num3 === 0)
             return [0.0, 0.0, 0.0];
         // Make small percentages better visible
         if (num1 > 0 && num1 < 1)
-            num1 = 1.0;
+            num1 = 1
         if (num2 > 0 && num2 < 1)
-            num2 = 1.0;
+            num2 = 1
         if (num3 > 0 && num3 < 1)
-            num3 = 1.0;
+            num3 = 1
         // Handle situation where some are rounded up
         while (num1 + num2 + num3 > 100) {
-            if (num1 >= num2 && num1 >= num3)
-                num1 = round1(num1 - 0.1);
-            else if (num2 >= num1 && num2 >= num3)
-                num2 = round1(num2 - 0.1);
-            else
-                num3 = round1(num3 - 0.1);
+            if (num1 > num2 && num1 > num3)
+                num1 -= 0.1;
+            else if (num2 > num1 && num2 > num3)
+                num2 -= 0.1;
+            else if (num3 > num1 && num3 > num2)
+                num3 -= 0.1;
+            else if (num1 > num3 && num1 == num2) {
+                num1 -= 0.1;
+                num2 -= 0.1;
+            }
+            else if (num1 > num2 && num1 == num3) {
+                num1 -= 0.1;
+                num3 -= 0.1;
+            }
+            else if (num2 > num1 && num2 == num3) {
+                num2 -= 0.1;
+                num3 -= 0.1;
+            }
         }
-        return [num1, num2, num3];
-    }
-    function round1(num) {
-        return Math.round(num*10) / 10;
+        return [Math.ceil(num1*10)/10, Math.ceil(num2*10)/10, Math.ceil(num3*10)/10];
     }
     return {
         Statistics: Statistics
@@ -1512,7 +1522,7 @@ window.testdata = function () {
     var STATUSES = ['FAIL', 'PASS', 'SKIP', 'NOT RUN'];
     var KEYWORD_TYPES = ['KEYWORD', 'SETUP', 'TEARDOWN', 'FOR', 'ITERATION', 'IF',
                          'ELSE IF', 'ELSE', 'RETURN', 'VAR', 'TRY', 'EXCEPT', 'FINALLY',
-                         'WHILE', 'GROUP', 'CONTINUE', 'BREAK', 'ERROR'];
+                         'WHILE', 'CONTINUE', 'BREAK', 'ERROR'];
     function addElement(elem) {
         if (!elem.id)
             elem.id = uniqueId();
@@ -2071,25 +2081,25 @@ storage = function () {
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,2,3,0,[],[1,0,6302],[],[[4,0,0,[],[1,295,6006],[[0,5,0,0,0,0,0,0,[1,297,4362],[[0,6,7,0,8,9,0,0,[1,297,1469],[[298,2,10]]],[0,11,7,0,12,13,0,0,[1,1767,2892],[[1767,2,14]]]]],[0,15,0,0,0,0,0,0,[1,4659,620],[[0,16,7,0,17,18,0,0,[1,4660,197],[[4660,2,19]]],[0,20,7,0,21,22,0,0,[1,4857,423],[[4857,2,23]]]]],[0,24,0,0,0,0,0,0,[1,5281,295],[[0,25,7,0,26,27,0,0,[1,5283,236],[]],[0,28,7,0,29,30,0,0,[1,5519,39],[[5520,2,31]]],[0,28,7,0,29,32,0,0,[1,5558,18],[[5559,2,33]]]]],[0,34,0,0,0,0,0,0,[1,5576,78],[[0,25,7,0,26,27,0,0,[1,5577,20],[]],[0,28,7,0,29,30,0,0,[1,5597,19],[[5597,2,35]]],[0,28,7,0,29,32,0,0,[1,5616,37],[[5617,2,36]]]]],[0,37,0,0,0,0,0,0,[1,5654,58],[[0,25,7,0,26,27,0,0,[1,5655,20],[]],[0,28,7,0,29,30,0,0,[1,5675,19],[[5675,2,38]]],[0,28,7,0,29,32,0,0,[1,5694,18],[[5695,2,39]]]]],[0,40,0,0,0,0,0,0,[1,5713,221],[[0,41,7,0,42,43,0,0,[1,5713,14],[[5727,2,44]]],[0,28,7,0,29,45,0,0,[1,5727,14],[[5728,2,31]]],[0,46,7,0,47,27,0,0,[1,5741,192],[[5742,2,48]]]]],[0,49,0,0,0,0,0,0,[1,5935,256],[[0,25,7,0,26,50,0,0,[1,5936,225],[]],[0,28,7,0,29,51,0,0,[1,6161,30],[[6161,2,52]]]]],[0,53,0,0,0,0,0,0,[1,6191,29],[[0,28,7,0,29,54,0,0,[1,6192,28],[[6192,2,55]]]]],[0,56,0,0,0,0,0,0,[1,6220,20],[[0,28,7,0,29,57,0,0,[1,6221,20],[[6221,2,58]]]]],[0,59,0,0,0,0,0,0,[1,6241,18],[[0,28,7,0,29,60,0,0,[1,6241,18],[[6241,2,61]]]]],[0,62,0,0,0,0,0,0,[1,6259,41],[[0,63,7,0,64,65,0,0,[1,6260,41],[[6301,2,66]]]]]]]],[],[1,1,0,0]];
+window.output["suite"] = [1,2,3,0,[],[1,0,9852],[],[[4,0,0,[],[1,405,9446],[[0,5,0,0,0,0,0,0,[1,406,5036],[[0,6,7,0,8,9,0,0,[1,408,2310],[[408,2,10]]],[0,11,7,0,12,13,0,0,[1,2719,2724],[[2719,2,14]]]]],[0,15,0,0,0,0,0,0,[1,5444,613],[[0,16,7,0,17,18,0,0,[1,5444,297],[[5445,2,19]]],[0,20,7,0,21,22,0,0,[1,5742,314],[[5742,2,23]]]]],[0,24,0,0,0,0,0,0,[1,6059,357],[[0,25,7,0,26,27,0,0,[1,6060,276],[]],[0,28,7,0,29,30,0,0,[1,6337,42],[[6337,2,31]]],[0,28,7,0,29,32,0,0,[1,6380,34],[[6381,2,33]]]]],[0,34,0,0,0,0,0,0,[1,6416,108],[[0,25,7,0,26,27,0,0,[1,6417,37],[]],[0,28,7,0,29,30,0,0,[1,6455,36],[[6456,2,35]]],[0,28,7,0,29,32,0,0,[1,6492,32],[[6492,2,36]]]]],[0,37,0,0,0,0,0,0,[1,6524,90],[[0,25,7,0,26,27,0,0,[1,6526,30],[]],[0,28,7,0,29,30,0,0,[1,6556,30],[[6556,2,38]]],[0,28,7,0,29,32,0,0,[1,6586,29],[[6587,2,39]]]]],[0,40,0,0,0,0,0,0,[1,6617,317],[[0,41,7,0,42,43,0,0,[1,6617,26],[[6643,2,44]]],[0,28,7,0,29,45,0,0,[1,6643,22],[[6644,2,31]]],[0,46,7,0,47,27,0,0,[1,6666,267],[[6666,2,48]]]]],[0,49,0,0,0,0,0,0,[1,6934,275],[[0,25,7,0,26,50,0,0,[1,6935,245],[]],[0,28,7,0,29,51,0,0,[1,7180,29],[[7181,2,52]]]]],[0,53,0,0,0,0,0,0,[1,7210,26],[[0,28,7,0,29,54,0,0,[1,7211,25],[[7211,2,55]]]]],[0,56,0,0,0,0,0,0,[1,7237,25],[[0,28,7,0,29,57,0,0,[1,7237,24],[[7237,2,58]]]]],[0,59,0,0,0,0,0,0,[1,7263,30],[[0,28,7,0,29,60,0,0,[1,7263,30],[[7265,2,61]]]]],[0,62,0,0,0,0,0,0,[1,7294,26],[[0,63,7,0,64,65,0,0,[1,7295,24],[[7319,2,66]]]]],[0,67,0,0,0,0,0,0,[1,7320,418],[[0,20,7,0,21,68,0,0,[1,7321,134],[[7321,2,69]]],[0,63,7,0,64,70,0,0,[1,7456,23],[[7479,2,71]]],[0,20,7,0,21,68,0,0,[1,7480,93],[[7480,2,69]]],[0,63,7,0,64,72,0,0,[1,7573,21],[[7594,2,73]]],[0,20,7,0,21,68,0,0,[1,7594,125],[[7595,2,69]]],[0,63,7,0,64,74,0,0,[1,7719,19],[[7738,2,75]]]]],[0,76,0,0,0,0,0,0,[1,7740,178],[[0,28,7,0,29,77,0,0,[1,7741,31],[[7741,2,78]]],[0,20,7,0,21,79,0,0,[1,7772,104],[[7773,2,80]]],[0,25,7,0,26,81,0,0,[1,7876,41],[]]]],[0,82,0,0,0,0,0,0,[1,7917,432],[[0,46,7,0,47,81,0,0,[1,7919,120],[[7919,2,83]]],[0,25,7,0,26,84,0,0,[1,8040,270],[]],[0,28,7,0,29,85,0,0,[1,8312,38],[[8312,2,86]]]]],[0,87,0,0,0,0,0,0,[1,8351,586],[[0,41,7,0,42,88,0,0,[1,8351,63],[[8414,2,89]]],[0,46,7,0,47,88,0,0,[1,8414,523],[[8416,2,90]]]]],[0,91,0,0,0,0,0,0,[1,8939,51],[[0,92,7,0,93,94,0,0,[1,8940,49],[]]]],[0,95,0,0,0,96,0,0,[1,8992,723],[[0,97,7,0,98,99,0,0,[1,8993,166],[[8993,2,100]]],[0,101,7,0,102,103,0,0,[1,9160,122],[[9283,2,104]]],[0,97,7,0,98,105,0,0,[1,9284,131],[[9284,2,106]]],[0,97,7,0,98,107,0,0,[1,9415,109],[[9415,2,108]]],[0,63,7,0,64,109,0,0,[1,9525,20],[[9545,2,110]]],[0,16,7,0,17,111,0,0,[1,9546,169],[[9546,2,112]]]]],[0,113,0,0,0,114,0,0,[1,9716,134],[[0,46,7,0,47,115,0,0,[1,9717,132],[[9717,2,116]]]]]]]],[],[1,1,0,0]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
 </script>
 <script type="text/javascript">
-window.output["strings"] = window.output["strings"].concat(["*","*Checkout Visa Success","*D:\\WorkAholic\\automate-robot-framework-workshopSCK\\sck_shopping\\checkout_visa_success.robot","*checkout_visa_success.robot","*ชำระเงินด้วย VISA CARD สำเร็จ","*เข้าหน้า HOME ของ SCK Shopping Mall","*Open Browser","*SeleniumLibrary","*<p>Opens a new browser instance to the optional <code>url\x3c/code>.\x3c/p>","*browser=${BROWSER}","*Opening browser 'Edge' to base url 'None'.","*Go To","*<p>Navigates the current browser window to the provided <code>url\x3c/code>.\x3c/p>","*url=${URL}","*Opening url '<a href=\"http://139.59.248.187/product/list\">http://139.59.248.187/product/list\x3c/a>'","*ค้นหาสินค้าด้วยคำค้น BiCyCle","*Input Text","*<p>Types the given <code>text\x3c/code> into the text field identified by <code>locator\x3c/code>.\x3c/p>","*id=search-product-input    text=BiCyCle","*Typing text 'BiCyCle' into text field 'id=search-product-input'.","*Click Button","*<p>Clicks the button identified by <code>locator\x3c/code>.\x3c/p>","*id=search-product-btn","*Clicking button 'id=search-product-btn'.","*ตรวจสอบผลการค้นหาที่ตำแหน่ง product-card-name-1 ต้องพบ Balance Training Bicycle และที่ตำแหน่ง product-card-price-1 ต้องพบราคาต่อชิ้น ฿4,314.60 บาท","*Wait Until Element Is Visible","*<p>Waits until the element <code>locator\x3c/code> is visible.\x3c/p>","*${expected_card_id}","*Element Text Should Be","*<p>Verifies that element <code>locator\x3c/code> contains exact the text <code>expected\x3c/code>.\x3c/p>","*id=${expected_card_id}    expected=${expected_product_name}","*Verifying element 'id=product-card-name-1' contains exact text 'Balance Training Bicycle'.","*id=${expected_product_price_id}    expected=${expected_product_price}","*Verifying element 'id=product-card-price-1' contains exact text '฿4,314.60'.","*ตรวจสอบผลการค้นหาที่ตำแหน่ง product-card-name-10 ต้องพบ Princess Training Bicycle และที่ตำแหน่ง product-card-price-10 ต้องพบราคาต่อชิ้น ฿4,314.60 บาท","*Verifying element 'id=product-card-name-10' contains exact text 'Princess Training Bicycle'.","*Verifying element 'id=product-card-price-10' contains exact text '฿4,314.60'.","*ตรวจสอบผลการค้นหาที่ตำแหน่ง product-card-name-458 ต้องพบ BICYCLE Playing Dices และที่ตำแหน่ง product-card-price-458 ต้องพบราคาต่อชิ้น ฿137.05 บาท","*Verifying element 'id=product-card-name-458' contains exact text 'BICYCLE Playing Dices'.","*Verifying element 'id=product-card-price-458' contains exact text '฿137.05'.","*เลือกดูรายละเอียดสินค้าที่ตำแหน่ง product-card-1 และที่ตำแหน่ง product-card-name-1 ชื่อสินค้าต้องพบ Balance Training Bicycle","*Element Should Be Visible","*<p>Verifies that the element identified by <code>locator\x3c/code> is visible.\x3c/p>","*id=${expected_card_id}","*Element 'id=product-card-1' is displayed.","*id=${expected_product_id}    expected=${expected_product_name}","*Click Element","*<p>Click the element identified by <code>locator\x3c/code>.\x3c/p>","*Clicking element 'product-card-1'.","*ตรวจสอบข้อมูลสินค้าที่ตำแหน่ง product-detail-product-name ชื่อสินค้าเท่ากันกับ Balance Training Bicycle","*id=${product-detail-product-name}","*id=${product-detail-product-name}    expected=${expected_product_name}","*Verifying element 'id=product-detail-product-name' contains exact text 'Balance Training Bicycle'.","*ตรวจสอบแบรนสินค้าที่ตำแหน่ง product-detail-brand ชื่อแบรนจะต้องเท่ากับ SportsFun","*id=${product-detail-brand}    expected=${expected_brand_name}","*Verifying element 'id=product-detail-brand' contains exact text 'SportsFun'.","*ตรวจสอบราคาของสินค้าที่ตำแหน่ง product-detail-price-thb จำนวนราคาที่แสดงต้องเท่ากับ ฿4,314.60","*id=${product-detail-price-thb}    expected=${expected_price}","*Verifying element 'id=product-detail-price-thb' contains exact text '฿4,314.60'.","*ตรวจสอบแต้มของสินค้าที่ตำแหน่ง product-detail-point จำนวนแต้มที่แสดงต้องเท่ากับ 43 Points","*id=${product-detail-point}    expected=${expected_point}","*Verifying element 'id=product-detail-point' contains exact text '43 Points'.","*ตรวจสอบจำนวนสินค้าที่ตำแหน่ง product-detail-quantity-input ต้องมีจำนวนเท่ากับ value 1","*Element Attribute Value Should Be","*<p>Verifies element identified by <code>locator\x3c/code> contains expected attribute value.\x3c/p>","*id=${product-detail-quantity-input}    ${expected_value}    ${expected_quantity}","*Element 'id=product-detail-quantity-input' attribute 'value' contains value '1'."]);
+window.output["strings"] = window.output["strings"].concat(["*","*Checkout Visa Success","*D:\\automate-robot-framework-workshopSCK\\sck_shopping\\checkout_visa_success.robot","*checkout_visa_success.robot","*ชำระเงินด้วย VISA CARD สำเร็จ","*เข้าหน้า HOME ของ SCK Shopping Mall","*Open Browser","*SeleniumLibrary","*<p>Opens a new browser instance to the optional <code>url\x3c/code>.\x3c/p>","*browser=${BROWSER}","*Opening browser 'Edge' to base url 'None'.","*Go To","*<p>Navigates the current browser window to the provided <code>url\x3c/code>.\x3c/p>","*url=${URL}","*Opening url '<a href=\"http://139.59.248.187/product/list\">http://139.59.248.187/product/list\x3c/a>'","*ค้นหาสินค้าด้วยคำค้น BiCyCle","*Input Text","*<p>Types the given <code>text\x3c/code> into the text field identified by <code>locator\x3c/code>.\x3c/p>","*id=search-product-input    text=BiCyCle","*Typing text 'BiCyCle' into text field 'id=search-product-input'.","*Click Button","*<p>Clicks the button identified by <code>locator\x3c/code>.\x3c/p>","*id=search-product-btn","*Clicking button 'id=search-product-btn'.","*ตรวจสอบผลการค้นหาที่ตำแหน่ง product-card-name-1 ต้องพบ Balance Training Bicycle และที่ตำแหน่ง product-card-price-1 ต้องพบราคาต่อชิ้น ฿4,314.60 บาท","*Wait Until Element Is Visible","*<p>Waits until the element <code>locator\x3c/code> is visible.\x3c/p>","*${expected_card_id}","*Element Text Should Be","*<p>Verifies that element <code>locator\x3c/code> contains exact the text <code>expected\x3c/code>.\x3c/p>","*id=${expected_card_id}    expected=${expected_product_name}","*Verifying element 'id=product-card-name-1' contains exact text 'Balance Training Bicycle'.","*id=${expected_product_price_id}    expected=${expected_product_price}","*Verifying element 'id=product-card-price-1' contains exact text '฿4,314.60'.","*ตรวจสอบผลการค้นหาที่ตำแหน่ง product-card-name-10 ต้องพบ Princess Training Bicycle และที่ตำแหน่ง product-card-price-10 ต้องพบราคาต่อชิ้น ฿4,314.60 บาท","*Verifying element 'id=product-card-name-10' contains exact text 'Princess Training Bicycle'.","*Verifying element 'id=product-card-price-10' contains exact text '฿4,314.60'.","*ตรวจสอบผลการค้นหาที่ตำแหน่ง product-card-name-458 ต้องพบ BICYCLE Playing Dices และที่ตำแหน่ง product-card-price-458 ต้องพบราคาต่อชิ้น ฿137.05 บาท","*Verifying element 'id=product-card-name-458' contains exact text 'BICYCLE Playing Dices'.","*Verifying element 'id=product-card-price-458' contains exact text '฿137.05'.","*เลือกดูรายละเอียดสินค้าที่ตำแหน่ง product-card-1 และที่ตำแหน่ง product-card-name-1 ชื่อสินค้าต้องพบ Balance Training Bicycle","*Element Should Be Visible","*<p>Verifies that the element identified by <code>locator\x3c/code> is visible.\x3c/p>","*id=${expected_card_id}","*Element 'id=product-card-1' is displayed.","*id=${expected_product_id}    expected=${expected_product_name}","*Click Element","*<p>Click the element identified by <code>locator\x3c/code>.\x3c/p>","*Clicking element 'product-card-1'.","*ตรวจสอบข้อมูลสินค้าที่ตำแหน่ง product-detail-product-name ชื่อสินค้าเท่ากันกับ Balance Training Bicycle","*id=${product-detail-product-name}","*id=${product-detail-product-name}    expected=${expected_product_name}","*Verifying element 'id=product-detail-product-name' contains exact text 'Balance Training Bicycle'.","*ตรวจสอบแบรนสินค้าที่ตำแหน่ง product-detail-brand ชื่อแบรนจะต้องเท่ากับ SportsFun","*id=${product-detail-brand}    expected=${expected_brand_name}","*Verifying element 'id=product-detail-brand' contains exact text 'SportsFun'.","*ตรวจสอบราคาของสินค้าที่ตำแหน่ง product-detail-price-thb จำนวนราคาที่แสดงต้องเท่ากับ ฿4,314.60","*id=${product-detail-price-thb}    expected=${expected_price}","*Verifying element 'id=product-detail-price-thb' contains exact text '฿4,314.60'.","*ตรวจสอบแต้มของสินค้าที่ตำแหน่ง product-detail-point จำนวนแต้มที่แสดงต้องเท่ากับ 43 Points","*id=${product-detail-point}    expected=${expected_point}","*Verifying element 'id=product-detail-point' contains exact text '43 Points'.","*ตรวจสอบจำนวนสินค้าที่ตำแหน่ง product-detail-quantity-input ต้องมีจำนวนเท่ากับ value 1","*Element Attribute Value Should Be","*<p>Verifies element identified by <code>locator\x3c/code> contains expected attribute value.\x3c/p>","*id=${product-detail-quantity-input}    ${expected_value}    ${expected_quantity}","*Element 'id=product-detail-quantity-input' attribute 'value' contains value '1'.","*กดเพิ่มจำนวนสินค้าที่ตำแหน่ง product-detail-quantity-increment-btn จำนวน 3 ครั้ง และตรวจสอบที่ตำแหน่ง product-detail-quantity-input ต้องมีจำนวนเท่ากับ 4","*id=${product-detail-quantity-increment-btn}","*Clicking button 'id=product-detail-quantity-increment-btn'.","*id=${product-detail-quantity-input}    value    2","*Element 'id=product-detail-quantity-input' attribute 'value' contains value '2'.","*id=${product-detail-quantity-input}    value    3","*Element 'id=product-detail-quantity-input' attribute 'value' contains value '3'.","*id=${product-detail-quantity-input}    value    4","*Element 'id=product-detail-quantity-input' attribute 'value' contains value '4'.","*กดเพิ่มสินค้าลงตระกร้า Add to cart","*id=product-detail-add-to-cart-btn    expected=${Add to cart}","*Verifying element 'id=product-detail-add-to-cart-btn' contains exact text 'Add to cart'.","*id=product-detail-add-to-cart-btn","*Clicking button 'id=product-detail-add-to-cart-btn'.","*id=header-menu-cart-badge","*คลิกดูตระกร้าสินค้าและแสดงหน้าตระกร้าสินค้า","*Clicking element 'id=header-menu-cart-badge'.","*id=shopping-cart-header","*id=shopping-cart-header    expected=Shopping cart","*Verifying element 'id=shopping-cart-header' contains exact text 'Shopping cart'.","*คลิกที่ปุ่ม Checkout","*id=shopping-cart-checkout-btn","*Element 'id=shopping-cart-checkout-btn' is displayed.","*Clicking element 'id=shopping-cart-checkout-btn'.","*แสดงหน้าสรุปคำสั่งซื้อ","*Wait Until Page Contains","*<p>Waits until <code>text\x3c/code> appears on the current page.\x3c/p>","*Orders    10s","*กรอกที่อยู่จัดส่ง","*shipping-form-province-select    เชียงใหม่    เมืองเชียงใหม่    สุเทพ    50200    0985862820","*Select From List By Label","*<p>Selects options from selection list <code>locator\x3c/code> by <code>labels\x3c/code>.\x3c/p>","*id=${ID_provice}    ${provide}","*Selecting options from selection list 'id=shipping-form-province-select' by label เชียงใหม่.","*Capture Element Screenshot","*<p>Captures a screenshot from the element identified by <code>locator\x3c/code> and embeds it into log file.\x3c/p>","*id=shipping-form-province-select    filename=province.png","*\x3c/td>\x3c/tr><tr><td colspan=\"3\"><a href=\"province.png\"><img src=\"province.png\" width=\"400px\">\x3c/a>","*id=shipping-form-district-select    ${district}","*Selecting options from selection list 'id=shipping-form-district-select' by label เมืองเชียงใหม่.","*id=shipping-form-sub-district-select    ${sub_district}","*Selecting options from selection list 'id=shipping-form-sub-district-select' by label สุเทพ.","*id=shipping-form-zipcode-input    value    ${zipcode}","*Element 'id=shipping-form-zipcode-input' attribute 'value' contains value '50200'.","*id=shipping-form-mobile-input    ${mobile_number}","*Typing text '0985862820' into text field 'id=shipping-form-mobile-input'.","*เลือกวิธีการจัดส่ง","*${DERIVERY}[kerry]","*id=${derivery}","*Clicking element 'id=shipping-method-1-card'."]);
 </script>
 <script type="text/javascript">
-window.output["stats"] = [[{"elapsed":"00:00:06","fail":0,"label":"All Tests","pass":1,"skip":0}],[],[{"elapsed":"00:00:06","fail":0,"id":"s1","label":"Checkout Visa Success","name":"Checkout Visa Success","pass":1,"skip":0}]];
+window.output["stats"] = [[{"elapsed":"00:00:09","fail":0,"label":"All Tests","pass":1,"skip":0}],[],[{"elapsed":"00:00:10","fail":0,"id":"s1","label":"Checkout Visa Success","name":"Checkout Visa Success","pass":1,"skip":0}]];
 </script>
 <script type="text/javascript">
 window.output["errors"] = [];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1740674751856;
+window.output["baseMillis"] = 1740973137669;
 </script>
 <script type="text/javascript">
-window.output["generated"] = 6308;
+window.output["generated"] = 9895;
 </script>
 <script type="text/javascript">
 window.output["expand_keywords"] = null;
@@ -2204,7 +2214,7 @@ function addExecutionLog(main) {
 
 <script type="text/x-jquery-tmpl" id="tagStatisticsRowTemplate">
   <tr class="row-${$item.index}">
-    <td class="stats-col-name" title="${doc}">
+    <td class="stats-col-name" title="{{html doc}}">
       <div class="stat-name">
         <span>{{html label}}</span>
         {{if info}}(${info}){{/if}}
